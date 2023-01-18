@@ -8,7 +8,7 @@ from requests import get
 from csv import writer
 
 url_base = 'https://jsonplaceholder.typicode.com/users/'
-file_name = 'USER_ID.csv'
+file_name = f'{argv[1]}.csv'
 
 
 def export_csv():
