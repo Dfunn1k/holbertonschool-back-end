@@ -1,16 +1,18 @@
 #!/usr/bin/python3
 """
- Module for task0 about request and apis
+Module for task0 about request and API
 """
 
+import requests
+from sys import argv
 
-if __name__ == '__main__':
-    import requests
-    from sys import argv
+url_base = 'https://jsonplaceholder.typicode.com/users/'
 
-    url = 'https://jsonplaceholder.typicode.com/users/'
-    name = requests.get(url + argv[1]).json()
-    todos = requests.get(url + argv[1] + '/todos/').json()
+
+def get_data():
+    """ This function get data of the placeholders API"""
+    name = requests.get(url_base + argv[1]).json()
+    todos = requests.get(url_base + argv[1] + '/todos/').json()
     count = 0
     title = ""
 
@@ -19,6 +21,9 @@ if __name__ == '__main__':
             title += "\t {}\n".format(item['title'])
             count += 1
 
-    output_1 = f"Employee {name['name']} is done with tasks({count}/20):"
-    output_2 = output_1 + f"\n{title}"
-    print(output_2, end='')
+    output = f"Employee {name['name']} is done with tasks({count}/20):"
+    print(output + f"\n{title}", end='')
+
+
+if __name__ == '__main__':
+    get_data()
