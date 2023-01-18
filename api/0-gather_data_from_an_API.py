@@ -7,20 +7,16 @@ if __name__ == '__main__':
     from sys import argv
 
     url = 'https://jsonplaceholder.typicode.com/users/'
-    first_request = requests.get(url + argv[1])
-    employee_name = first_request.json()
-    second_requests = requests.get(url + argv[1] + '/todos/')
+    name = requests.get(url + argv[1]).json()
+    todos = requests.get(url + argv[1] + '/todos/').json()
     count = 0
-    task = second_requests.json()
     title = ""
 
-    for item in task:
+    for item in todos:
         if item['completed'] is True:
-            if item != task[19]:
-                title += "\t {}\n".format(item['title'])
-            else:
-                title += "\t {}".format(item['title'])
+            title += "\t {}\n".format(item['title'])
             count += 1
 
-    print("""Employee {} is done with tasks({}/20):
-    {}""".format(employee_name['name'], count, title), end='')
+    output_1 = f"Employee {name['name']} is done with tasks({count}/20):"
+    output_2 = output_1 + f"\n{title}"
+    print(output_2, end='')
