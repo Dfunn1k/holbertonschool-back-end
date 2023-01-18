@@ -8,13 +8,13 @@ from requests import get
 from csv import writer
 
 url_base = 'https://jsonplaceholder.typicode.com/users/'
-file_name = argv[1] + '.csv'
 
 
 def export_csv():
     """"""
     usr = get(url_base + argv[1]).json()
     tasks = get(url_base + argv[1] + '/todos').json()
+    file_name = argv[1] + '.csv'
 
     for task in tasks:
         data = [usr['id'], usr['username'], task['completed'], task['title']]
