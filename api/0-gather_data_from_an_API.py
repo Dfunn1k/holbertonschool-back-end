@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Module for task0"""
+""" Module for task0 """
 
 
 if __name__ == '__main__':
