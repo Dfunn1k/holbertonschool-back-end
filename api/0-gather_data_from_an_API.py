@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" Module for task0 """
+"""
+ Module for task0 about request and apis
+"""
 
 
 if __name__ == '__main__':
