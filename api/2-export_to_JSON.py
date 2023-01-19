@@ -29,7 +29,7 @@ def export_json():
     retrieve_json[argv[1]] = items_data
 
     with open(file_name, 'w', encoding='utf-8') as file_json:
-        file_json.write(dumps(retrieve_json))
+        dumps(retrieve_json, file_json)
 
 
 if __name__ == '__main__':
