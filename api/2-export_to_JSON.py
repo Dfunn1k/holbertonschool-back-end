@@ -4,7 +4,7 @@ Module documentation for task 2 about retrieve json
 """
 
 from sys import argv
-from json import dumps
+from json import dump
 from requests import get
 
 url_base = 'https://jsonplaceholder.typicode.com/users/'
@@ -29,7 +29,7 @@ def export_json():
     retrieve_json[argv[1]] = items_data
 
     with open(file_name, 'w', encoding='utf-8') as file_json:
-        dumps(retrieve_json, file_json)
+        dump(retrieve_json, file_json)
 
 
 if __name__ == '__main__':
