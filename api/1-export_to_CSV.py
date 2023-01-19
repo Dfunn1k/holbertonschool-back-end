@@ -5,7 +5,6 @@ Module task1 about how to export data in the CSV format
 
 from sys import argv
 from requests import get
-from csv import writer
 
 url_base = 'https://jsonplaceholder.typicode.com/users/'
 
@@ -17,10 +16,12 @@ def export_csv():
     file_name = argv[1] + '.csv'
 
     for task in tasks:
-        data = [usr['id'], usr['username'], task['completed'], task['title']]
+        data = '"' + str(usr['id']) + '",' + '"' + usr['username'] + '",' +\
+               '"' + str(task['completed']) + '",' + '"' + task['title'] +\
+               '"\n'
+
         with open(file_name, 'a', encoding='utf-8') as csvfile:
-            csvwrite = writer(csvfile)
-            csvwrite.writerow(data)
+            csvfile.write(data)
 
 
 if __name__ == '__main__':
